@@ -1,0 +1,172 @@
+:root {
+  --primary-dark-quasi-noir: #17181a;
+  --primary-dark-dark-grey: #303136;
+  --primary-dark-grey: #616161;
+  --primary-dark-dark-blue: #005db2;
+  --primary-dark-lighter-blue: #1991ff;
+
+  --secondary-dark-grey1: #818181;
+  --secondary-dark-grey2: #a5a5a5;
+  --secondary-dark-Blue1: #109dff;
+  --secondary-dark-Blue2: #29a8ff;
+  --secondary-dark-Blue3: #339dff;
+  --secondary-dark-Blue4: #339cffbd;
+  --secondary-dark-Blue5: #b2daff;
+
+  --ff-sans: "Poppins", sans-serif;
+}
+
+/* Pour centrer la calculatrice */
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #daf0ff;
+  font-family: var(--ff-sans);
+}
+
+.calculator {
+  height: 650px;
+  width: 375px;
+  background-color: var(--primary-dark-quasi-noir);
+  border-radius: 40px;
+}
+
+.screen {
+  height: 150px;
+  padding: 2em;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: end;
+}
+
+#displayed_pressed_keys {
+  font-size: x-large;
+}
+
+#final_result {
+  font-size: xxx-large;
+  padding-bottom: 1rem;
+}
+
+.keypad {
+  margin: 34px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  justify-items: center;
+  gap: 15px;
+}
+
+button {
+  height: 62px;
+  width: 62px;
+  border-radius: 16px;
+  border: none;
+}
+#equal {
+  height: 144px;
+}
+
+#zero {
+  width: 144px;
+}
+
+#reset_key,
+#sept,
+#quatre,
+#un,
+#zero {
+  grid-column: 1;
+}
+
+#delete_last_pressed_key,
+#huit,
+#cinq,
+#deux {
+  grid-column: 2;
+}
+
+#divide,
+#neuf,
+#six,
+#trois,
+#decimal {
+  grid-column: 3;
+}
+
+#multiply,
+#subtract,
+#add,
+#equal {
+  grid-column: 4;
+}
+
+#sept,
+#huit,
+#neuf,
+#subtract {
+  grid-row: 2;
+}
+
+#quatre,
+#cinq,
+#six,
+#add {
+  grid-row: 3;
+}
+
+#zero {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+#equal {
+  grid-row-start: 4;
+  grid-row-end: 6;
+}
+
+.function_key {
+  background-color: var(--primary-dark-grey);
+  color: var(--secondary-dark-grey2);
+  font-size: larger;
+}
+.function_key:hover {
+  background-color: gray;
+}
+.function_key:active {
+  background-color: rgb(201, 200, 200);
+}
+
+.opérande {
+  background-color: var(--primary-dark-dark-blue);
+  color: var(--secondary-dark-Blue3);
+  font-size: x-large;
+  font-weight: 500;
+}
+.opérande:hover {
+  background-color: var(--secondary-dark-Blue4);
+}
+.opérande:active {
+  background-color: var(--secondary-dark-Blue5);
+}
+
+.number {
+  background-color: var(--primary-dark-dark-grey);
+  color: var(--secondary-dark-Blue2);
+  font-size: xx-large;
+}
+.number:hover {
+  background-color: var(--primary-dark-grey);
+}
+.number:active {
+  background-color: var(--secondary-dark-Blue5);
+}
+
+#equal {
+  font-size: x-large;
+  font-weight: 500;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculatrice</title>
+    <!-- Normalisation CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="calculator">
+      <div class="screen">
+        <div id="final_result"></div>
+        <div id="displayed_pressed_keys">0</div>
+      </div>
+      <div class="keypad">
+        <button id="reset_key" class="function_key">AC</button>
+        <button id="delete_last_pressed_key" class="function_key">del</button>
+        <button id="divide" class="opérande">/</button>
+        <button id="multiply" class="opérande">*</button>
+        <button id="add" class="opérande">+</button>
+        <button id="subtract" class="opérande">-</button>
+        <button id="sept" class="number">7</button>
+        <button id="huit" class="number">8</button>
+        <button id="neuf" class="number">9</button>
+        <button id="quatre" class="number">4</button>
+        <button id="cinq" class="number">5</button>
+        <button id="six" class="number">6</button>
+        <button id="un" class="number">1</button>
+        <button id="deux" class="number">2</button>
+        <button id="trois" class="number">3</button>
+        <button id="zero" class="number">0</button>
+        <button id="decimal" class="number">.</button>
+        <button id="equal" class="egal">=</button>
+      </div>
+    </div>
+    <script type="module" src="./js/script.js"></script>
+  </body>
+</html>
