@@ -35,7 +35,7 @@ function displayFormulaOnScreen(pressedKey) {
 function calculate() {
   result = eval(typedExpression);
   console.log(result);
-  finalResultWrittenOnScreen.innerHTML = result;
+  finalResultWrittenOnScreen.innerHTML = result.toPrecision(5);
 }
 
 function deleteKeyFeature(pressedKey) {
