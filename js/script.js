@@ -40,7 +40,7 @@ function displayFormulaOnScreen(pressedKey) {
 
 function checkValidityOfPressedKey(pressedKey) {
   if (operators.includes(typedExpression.slice(-1)) && pressedKey != "-") {
-    console.log("operator key pressed multiple time in a row");
+    console.warn("operator key pressed multiple time in a row");
     deleteKeyFeature();
     checkValidityOfPressedKey(pressedKey);
     // If user types multiple time an operator key, the key is updated with last operator EXCEPT if that operator is "-" (because of negative numbers)
