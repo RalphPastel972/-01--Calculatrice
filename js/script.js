@@ -36,8 +36,6 @@ function calculate(numberOfDecimalDigits) {
   result = eval(typedExpression);
   const decimalStr = (result - Math.floor(result)).toString();
   const decimalLength = decimalStr.length - 1; // exclude the leading '0.'
-  //   console.log(result);
-  //   console.log(result.length);
   if (decimalLength > numberOfDecimalDigits) {
 
     const factor = Math.pow(10, numberOfDecimalDigits);
@@ -45,7 +43,6 @@ function calculate(numberOfDecimalDigits) {
     finalResultWrittenOnScreen.innerHTML = roundedResult;
 
   } else {
-
       finalResultWrittenOnScreen.innerHTML = result;
   }
 
