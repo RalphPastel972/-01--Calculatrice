@@ -14,7 +14,7 @@ document.addEventListener("click", (event) => {
   }
 
   if (event.target.className === "egal") {
-    calculate();
+    calculate(5); //hardcoded number of digits in parameter
   }
 
   if (event.target.id === "delete_last_pressed_key") {
@@ -32,10 +32,23 @@ function displayFormulaOnScreen(pressedKey) {
   formulaWrittenOnScreen.innerHTML = typedExpression;
 }
 
-function calculate() {
+function calculate(numberOfDecimalDigits) {
   result = eval(typedExpression);
-  console.log(result);
-  finalResultWrittenOnScreen.innerHTML = result.toPrecision(5);
+  const decimalStr = (result - Math.floor(result)).toString();
+  const decimalLength = decimalStr.length - 1; // exclude the leading '0.'
+  //   console.log(result);
+  //   console.log(result.length);
+  if (decimalLength > numberOfDecimalDigits) {
+
+    const factor = Math.pow(10, numberOfDecimalDigits);
+    let roundedResult = Math.floor(result * factor) / factor;
+    finalResultWrittenOnScreen.innerHTML = roundedResult;
+
+  } else {
+
+      finalResultWrittenOnScreen.innerHTML = result;
+  }
+
 }
 
 function deleteKeyFeature(pressedKey) {
