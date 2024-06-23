@@ -6,7 +6,7 @@ let formulaWrittenOnScreen = document.querySelector("#displayed_pressed_keys");
 let finalResultWrittenOnScreen = document.querySelector("#final_result");
 
 document.addEventListener("click", (event) => {
-  console.log(event);
+//   console.log(event);
   if (event.target.className === "number") {
     displayFormulaOnScreen(event.target.textContent);
   }
@@ -35,15 +35,12 @@ function displayFormulaOnScreen(pressedKey) {
   } else {
     typedExpression = typedExpression + pressedKey;
   }
-  console.log(typedExpression);
   formulaWrittenOnScreen.innerHTML = typedExpression;
 }
 
 function checkValidityOfPressedKey(pressedKey) {
-  console.log(operators);
-  console.log(typedExpression.slice(-1));
   if (operators.includes(typedExpression.slice(-1)) && pressedKey != "-") {
-    console.log("operator key pressed multiple time successively");
+    console.log("operator key pressed multiple time in a row");
     deleteKeyFeature();
     checkValidityOfPressedKey(pressedKey);
     // If user types multiple time an operator key, the key is updated with last operator EXCEPT if that operator is "-" (because of negative numbers)
