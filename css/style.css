@@ -31,6 +31,7 @@ body {
   width: 375px;
   background-color: var(--primary-dark-quasi-noir);
   border-radius: 40px;
+  box-shadow: 60px 30px 60px #0841764a;
 }
 
 .screen {
