@@ -6,17 +6,17 @@ let formulaWrittenOnScreen = document.getElementById("displayed_pressed_keys");
 let finalResultWrittenOnScreen = document.getElementById("final_result");
 
 document.addEventListener("click", (event) => {
-//   console.log(event);
+  //   console.log(event);
   if (event.target.className === "number") {
-    displayFormulaOnScreen(event.target.textContent);
+    checkValidityOfPressedDigitKey(event.target.textContent);
   }
 
   if (event.target.className === "opérande") {
-    checkValidityOfPressedKey(event.target.textContent);
+    checkValidityOfPressedOperatorKey(event.target.textContent);
   }
 
   if (event.target.className === "egal") {
-    calculate(5); //hardcoded number of digits in parameter
+    resultRoundingDecisionMaking(5); //hardcoded number of decimal digits in this parameter
   }
 
   if (event.target.id === "delete_last_pressed_key") {
@@ -28,40 +28,47 @@ document.addEventListener("click", (event) => {
   }
 });
 
-function displayFormulaOnScreen(pressedKey) {
+function checkValidityOfPressedDigitKey(pressedKey) {
   if (operators.includes(typedExpression.slice(-1))) {
-    // adds a space in the expression before a digit if the previous pressed key is an operator.
-    typedExpression = typedExpression + " " + pressedKey;
+    typedExpression = typedExpression + " " + pressedKey; // adds a space in the expression before a digit if the previous pressed key was an operator.
   } else {
-    typedExpression = typedExpression + pressedKey;
+    typedExpression = typedExpression + pressedKey; // else adds typed digit without the space
   }
-  formulaWrittenOnScreen.innerHTML = typedExpression;
+  displayFormulaOnScreen();
 }
 
-function checkValidityOfPressedKey(pressedKey) {
+function checkValidityOfPressedOperatorKey(pressedKey) {
   if (operators.includes(typedExpression.slice(-1)) && pressedKey != "-") {
     console.warn("operator key pressed multiple time in a row");
     deleteKeyFeature();
-    checkValidityOfPressedKey(pressedKey);
+    checkValidityOfPressedOperatorKey(pressedKey);
     // If user types multiple time an operator key, the key is updated with last operator EXCEPT if that operator is "-" (because of negative numbers)
   } else {
-    typedExpression = typedExpression + " "; // adds a space in the expression after an operator has been typed
-    displayFormulaOnScreen(pressedKey);
+    typedExpression = typedExpression + " " + pressedKey; // adds a space in the expression after an operator has been typed
+    displayFormulaOnScreen();
   }
 }
 
-function calculate(numberOfDecimalDigits) {
-  result = eval(typedExpression);
+function displayFormulaOnScreen() {
+  formulaWrittenOnScreen.innerHTML = typedExpression;
+}
+
+function resultRoundingDecisionMaking(numberOfDecimalDigits) {
+  result = eval(typedExpression); // I shouldn't use eval() because of security concern. I didn't find a better way yet
   const decimalStr = (result - Math.floor(result)).toString();
-  const decimalLength = decimalStr.length - 1; // exclude the leading '0.'
+  const decimalLength = decimalStr.length - 1;
+  const factor = Math.pow(10, numberOfDecimalDigits);
+  let roundedResult = Math.floor(result * factor) / factor;
   if (decimalLength > numberOfDecimalDigits) {
-    const factor = Math.pow(10, numberOfDecimalDigits);
-    let roundedResult = Math.floor(result * factor) / factor;
-    finalResultWrittenOnScreen.innerHTML = roundedResult;
+    displayFinalResultOnScreen(roundedResult);
   } else {
-    finalResultWrittenOnScreen.innerHTML = result;
+    displayFinalResultOnScreen(result);
   }
 }
+
+function displayFinalResultOnScreen(finalResultToBeDisplayed) {
+    finalResultWrittenOnScreen.innerHTML = finalResultToBeDisplayed;
+  }
 
 function deleteKeyFeature() {
   typedExpression = typedExpression.slice(0, typedExpression.length - 1);
@@ -74,4 +81,3 @@ function resetCalculator() {
   result = 0;
   finalResultWrittenOnScreen.innerHTML = "";
 }
-
