@@ -2,8 +2,8 @@ let typedExpression = "";
 let result;
 const operators = ["+", "-", "*", "/"];
 
-let formulaWrittenOnScreen = document.querySelector("#displayed_pressed_keys");
-let finalResultWrittenOnScreen = document.querySelector("#final_result");
+let formulaWrittenOnScreen = document.getElementById("displayed_pressed_keys");
+let finalResultWrittenOnScreen = document.getElementById("final_result");
 
 document.addEventListener("click", (event) => {
 //   console.log(event);
@@ -74,3 +74,4 @@ function resetCalculator() {
   result = 0;
   finalResultWrittenOnScreen.innerHTML = "";
 }
+
