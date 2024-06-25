@@ -71,8 +71,8 @@ function displayFinalResultOnScreen(finalResultToBeDisplayed) {
   }
 
 function deleteKeyFeature() {
-  typedExpression = typedExpression.slice(0, typedExpression.length - 1);
-  formulaWrittenOnScreen.innerHTML = typedExpression;
+  typedExpression = typedExpression.slice(0, - 1);
+  displayFormulaOnScreen();
 }
 
 function resetCalculator() {
